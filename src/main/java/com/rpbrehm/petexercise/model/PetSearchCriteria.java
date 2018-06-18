@@ -36,4 +36,5 @@ public class PetSearchCriteria {
     public Optional<String> getZipCode() {
         return zipCode;
     }
+
 }

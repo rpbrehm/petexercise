@@ -2,7 +2,7 @@ package com.rpbrehm.petexercise.model;
 
 public enum PetGender {
 
-    MALE ("male"), FEMALE("female");
+    MALE ("male"), FEMALE("female"), NEUTERED("neutered"), SPAYED("spayed");
 
     private String displayName;
 

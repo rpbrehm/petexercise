@@ -5,7 +5,6 @@ import com.rpbrehm.petexercise.model.PetSearchCriteria;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /*
  A simple repository for creating data objects
@@ -21,7 +20,11 @@ public class PetRepository {
         pets.get().add(pet);
     }
 
-    public Optional<List<Pet>> findPet(PetSearchCriteria petSearchCriteria) {
+    public Optional<List<Pet>> getPets() {
+        return pets;
+    }
+
+    public Optional<List<Pet>> findPets(PetSearchCriteria petSearchCriteria) {
         TreeSet<Pet> petsInTree;
 
         // Nothing to do if there are no pets
