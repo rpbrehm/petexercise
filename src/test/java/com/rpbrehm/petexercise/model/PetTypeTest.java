@@ -9,19 +9,9 @@ public class PetTypeTest {
 
         //Expect
         assertEquals(PetType.CAT.getDisplayName(),"cat");
-    }
-
-    @org.junit.Test
-    public void getDisplayNameDog() {
-
-        //Expect
         assertEquals(PetType.DOG.getDisplayName(),"dog");
-    }
-
-    @org.junit.Test
-    public void getDisplayNameRabbit() {
-
-        //Expect
         assertEquals(PetType.RABBIT.getDisplayName(),"rabbit");
+
     }
+
 }
