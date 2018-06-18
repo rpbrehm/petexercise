@@ -10,7 +10,6 @@ public class PetGenderTest {
         //Expect
         assertEquals(PetGender.MALE.getDisplayName(),"male");
         assertEquals(PetGender.FEMALE.getDisplayName(),"female");
-
     }
 
 }

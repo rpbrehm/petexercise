@@ -11,7 +11,6 @@ public class PetTypeTest {
         assertEquals(PetType.CAT.getDisplayName(),"cat");
         assertEquals(PetType.DOG.getDisplayName(),"dog");
         assertEquals(PetType.RABBIT.getDisplayName(),"rabbit");
-
     }
 
 }

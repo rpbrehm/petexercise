@@ -1,40 +1,54 @@
 package com.rpbrehm.petexercise.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class PetSearchCriteriaTest {
 
+    PetSearchCriteria searchCriteria;
+
+    @Before
+    public void setUp() throws Exception {
+        searchCriteria = new PetSearchCriteria();
+    }
+
     @Test
     public void createSearchCriteria() throws Exception {
-        // Setup
-        PetSearchCriteria searchCriteria = new PetSearchCriteria();
-        //
+
+        // Expect
+        assertNotNull(searchCriteria);
     }
 
     @Test
-    public void setPetType() throws Exception {
+    public void testPetType() throws Exception {
+
+        //Setup
+        searchCriteria.setPetType(PetType.CAT);
+
+        // Expect
+        assertEquals(searchCriteria.getPetType(), PetType.CAT);
     }
 
     @Test
-    public void setPetGender() throws Exception {
+    public void testPetGender() throws Exception {
+
+        //Setup
+        searchCriteria.setPetGender(PetGender.FEMALE);
+
+        // Expect
+        assertEquals(searchCriteria.getPetGender(), PetGender.FEMALE);
     }
 
     @Test
-    public void setZipCode() throws Exception {
-    }
+    public void testZipCode() throws Exception {
 
-    @Test
-    public void getPetType() throws Exception {
-    }
+        //Setup
+        searchCriteria.setZipCode("12345");
 
-    @Test
-    public void getPetGender() throws Exception {
-    }
-
-    @Test
-    public void getZipCode() throws Exception {
+        // Expect
+        assertEquals(searchCriteria.getZipCode(), "12345");
     }
 
 }

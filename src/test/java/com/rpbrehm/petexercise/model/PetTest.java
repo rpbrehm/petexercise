@@ -16,6 +16,7 @@ public class PetTest {
 
     @Test
     public void testGetters() {
+
         //Expect
         assertEquals(pet.getId(), 1);
         assertEquals(pet.getName(), "fido");
