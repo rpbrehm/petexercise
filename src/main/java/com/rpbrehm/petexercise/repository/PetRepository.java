@@ -25,35 +25,32 @@ public class PetRepository {
     }
 
     public Optional<List<Pet>> findPets(PetSearchCriteria petSearchCriteria) {
-        TreeSet<Pet> petsInTree;
+        List<Pet> petsInList;
 
         // Nothing to do if there are no pets
         if (pets.isPresent()) {
             // Save the list as a tree set.  This is so each filtered list will not create duplicates.
-            petsInTree = new TreeSet<>();
+            petsInList = new ArrayList<>(pets.get());
 
             if (petSearchCriteria.getZipCode().isPresent()) {
-                List<Pet> result = pets.get().stream()
-                        .filter(pet -> pet.getZipCode().equals(petSearchCriteria.getZipCode().get()))
-                        .collect(Collectors.toList());
-                petsInTree.addAll(result);
+                petsInList = petsInList.stream()
+                .filter(pet -> pet.getZipCode().equals(petSearchCriteria.getZipCode().get()))
+                .collect(Collectors.toCollection(ArrayList::new));
             }
             if (petSearchCriteria.getPetGender().isPresent()) {
-                List<Pet> result = pets.get().stream()
-                        .filter(pet -> pet.getPetGender().equals(petSearchCriteria.getPetGender().get()))
-                        .collect(Collectors.toList());
-                petsInTree.addAll(result);
+                petsInList = petsInList.stream()
+                .filter(pet -> pet.getPetGender().equals(petSearchCriteria.getPetGender().get()))
+                .collect(Collectors.toCollection(ArrayList::new));
             }
             if (petSearchCriteria.getPetType().isPresent()) {
-                List<Pet> result = pets.get().stream()
-                        .filter(pet -> pet.getPetType().equals(petSearchCriteria.getPetType().get()))
-                        .collect(Collectors.toList());
-                petsInTree.addAll(result);
+                petsInList = petsInList.stream()
+                .filter(pet -> pet.getPetType().equals(petSearchCriteria.getPetType().get()))
+                .collect(Collectors.toCollection(ArrayList::new));
             }
-            if (petsInTree.isEmpty()) {
+            if (petsInList.isEmpty()) {
                 return Optional.empty();
             } else {
-                return Optional.ofNullable(new ArrayList<Pet>(petsInTree));
+                return Optional.ofNullable(new ArrayList<Pet>(petsInList));
             }
 
         }

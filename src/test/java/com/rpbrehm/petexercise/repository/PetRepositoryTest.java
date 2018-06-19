@@ -49,11 +49,58 @@ public class PetRepositoryTest {
     }
 
     @Test
-    public void findPetsfor97210() throws Exception {
+    public void findPetsforDog() throws Exception {
         // Setup
         PetSearchCriteria criteria = new PetSearchCriteria();
         criteria.createSearchCriteria();
-        criteria.setZipCode("97210");
+        criteria.setPetType(PetType.DOG);
+
+        // When
+        Optional<List<Pet>> pets = petRepository.findPets(criteria);
+
+        // Expect
+        assertEquals(pets.get().size(), 4);
+
+    }
+
+    @Test
+    public void findPetsforSpayed() throws Exception {
+        // Setup
+        PetSearchCriteria criteria = new PetSearchCriteria();
+        criteria.createSearchCriteria();
+        criteria.setPetGender(PetGender.SPAYED);
+
+        // When
+        Optional<List<Pet>> pets = petRepository.findPets(criteria);
+
+        // Expect
+        assertEquals(pets.get().size(), 3);
+
+    }
+    @Test
+    public void findPetsfor90210DogSpayed() throws Exception {
+        // Setup
+        PetSearchCriteria criteria = new PetSearchCriteria();
+        criteria.createSearchCriteria();
+        criteria.setZipCode("90210");
+        criteria.setPetType(PetType.DOG);
+        criteria.setPetGender(PetGender.SPAYED);
+
+        // When
+        Optional<List<Pet>> pets = petRepository.findPets(criteria);
+
+        // Expect
+        assertEquals(pets.get().size(), 1);
+
+    }
+
+
+    @Test
+    public void findPetsfor90210() throws Exception {
+        // Setup
+        PetSearchCriteria criteria = new PetSearchCriteria();
+        criteria.createSearchCriteria();
+        criteria.setZipCode("90210");
 
         // When
         Optional<List<Pet>> pets = petRepository.findPets(criteria);
@@ -62,5 +109,4 @@ public class PetRepositoryTest {
         assertEquals(pets.get().size(), 2);
 
     }
-
 }
